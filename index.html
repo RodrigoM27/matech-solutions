@@ -142,34 +142,53 @@ section {
             .marca-item { font-size: 0.9rem; }
         }
 
-/* --- ESTILOS DE MARCAS --- */
+/* --- ESTILOS DE RECUADROS PARA LOGOS --- */
         .grid-marcas {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
             justify-content: center;
+        }
+
+        .marca-box {
+            background-color: #111111; /* Fondo gris oscuro minimalista */
+            border: 1px solid #1a1a1a; /* Borde sutil */
+            border-radius: 12px;
+            height: 100px;
+            display: flex;
             align-items: center;
-            gap: 3rem;
+            justify-content: center;
+            padding: 20px;
+            transition: all 0.4s ease;
         }
 
-        .marca-item {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #444; /* Color gris oscuro por defecto */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            cursor: default;
-            user-select: none;
+        .marca-box img {
+            max-width: 100%;
+            max-height: 50px;
+            width: auto;
+            filter: grayscale(1) brightness(1.5); /* Logos en escala de grises clara */
+            opacity: 0.7;
+            transition: all 0.4s ease;
         }
 
-        .marca-item:hover {
-            color: var(--cian-matech); /* Cambia al cian de MATECH al pasar el mouse */
-            transform: scale(1.1);
+        /* Efecto al pasar el mouse sobre el recuadro */
+        .marca-box:hover {
+            background-color: #151515;
+            border-color: var(--cian-matech); /* El borde brilla en el color de tu marca */
+            transform: translateY(-5px);
         }
 
-        @media (max-width: 768px) {
-            .grid-marcas { gap: 1.5rem; }
-            .marca-item { font-size: 1rem; }
+        .marca-box:hover img {
+            filter: grayscale(0) brightness(1); /* El logo recupera su color original */
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .grid-marcas {
+                grid-template-columns: repeat(2, 1fr); /* 2 columnas en móviles */
+                gap: 1rem;
+            }
+            .marca-box { height: 80px; padding: 15px; }
         }
 
 /* --- ESTILOS DE FAQ (MODO ACORDEÓN) --- */
@@ -395,15 +414,33 @@ img {
 </section>
 
 	<section id="marcas" style="background-color: #050505; padding: 4rem 10%;">
-    <h2 class="section-title" style="font-size: 1.5rem; color: var(--gris-texto); margin-bottom: 2rem;">Trabajamos con las mejores marcas</h2>
+    <h2 class="section-title" style="font-size: 1.1rem; color: var(--gris-texto); margin-bottom: 3rem; letter-spacing: 2px;">Partner Tecnológicos</h2>
     <div class="grid-marcas">
-        <div class="marca-item">Hikvision</div>
-        <div class="marca-item">Dahua</div>
-        <div class="marca-item">Intel</div>
-        <div class="marca-item">Ugreen</div>
-        <div class="marca-item">Cisco</div>
-        <div class="marca-item">TP-Link</div>
-        <div class="marca-item">Western Digital</div>
+        
+        <div class="marca-box">
+            <img src="logo-hikvision.png" alt="Hikvision">
+        </div>
+        
+        <div class="marca-box">
+            <img src="logo-dahua.png" alt="Dahua">
+        </div>
+        
+        <div class="marca-box">
+            <img src="logo-intel.png" alt="Intel">
+        </div>
+        
+        <div class="marca-box">
+            <img src="logo-cisco.png" alt="Cisco">
+        </div>
+        
+        <div class="marca-box">
+            <img src="logo-tplink.png" alt="TP-Link">
+        </div>
+        
+        <div class="marca-box">
+            <img src="logo-wd.png" alt="Western Digital">
+        </div>
+
     </div>
 </section>
 
