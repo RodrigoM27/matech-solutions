@@ -172,7 +172,7 @@ section {
             .marca-item { font-size: 1rem; }
         }
 
-/* --- ESTILOS DE FAQ --- */
+/* --- ESTILOS DE FAQ (MODO ACORDEÓN) --- */
         .faq-item {
             background-color: #0a0a0a;
             border: 1px solid #1a1a1a;
@@ -189,10 +189,11 @@ section {
             justify-content: space-between;
             align-items: center;
             color: var(--blanco);
-            transition: color 0.3s;
+            transition: background 0.3s;
         }
 
         .faq-question:hover {
+            background-color: #111;
             color: var(--cian-matech);
         }
 
@@ -201,13 +202,24 @@ section {
             color: var(--gris-texto);
             font-size: 0.95rem;
             line-height: 1.6;
+            display: none; /* ESTO OCULTA LA RESPUESTA AL INICIO */
         }
 
         .faq-question i {
             font-size: 0.8rem;
             color: var(--cian-matech);
+            transition: transform 0.3s;
         }
 
+        /* Clase que usaremos con JavaScript para rotar la flecha */
+        .faq-item.active i {
+            transform: rotate(180deg);
+        }
+
+        /* Clase para mostrar la respuesta */
+        .faq-item.active .faq-answer {
+            display: block;
+        }
 /* --- ESTILOS DEL MENÚ DESPLEGABLE (DROPDOWN) --- */
         .dropdown {
     position: relative;
@@ -484,6 +496,24 @@ img {
             document.querySelector('.dropdown-content').style.display = 'none';
         });
     });
+
+	// --- LÓGICA PARA EL ACORDEÓN DE PREGUNTAS (FAQ) ---
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            
+            // Opcional: Cerrar otras preguntas abiertas al abrir una nueva
+            document.querySelectorAll('.faq-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+
+            // Activar/Desactivar la pregunta seleccionada
+            item.classList.toggle('active');
+        });
+    });
+
 </script>
 
 </body>
