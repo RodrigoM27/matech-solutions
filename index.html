@@ -142,7 +142,7 @@ section {
             .marca-item { font-size: 0.9rem; }
         }
 
-/* --- ESTILOS DE RECUADROS PARA LOGOS --- */
+/* --- RECUADROS INDIVIDUALES CON CONTRASTE --- */
         .grid-marcas {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -151,44 +151,40 @@ section {
         }
 
         .marca-box {
-            background-color: #111111; /* Fondo gris oscuro minimalista */
-            border: 1px solid #1a1a1a; /* Borde sutil */
-            border-radius: 12px;
+            background-color: #f5f5f5; /* Gris muy claro (casi blanco) para que el negro resalte */
+            border: 1px solid #e0e0e0;
+            border-radius: 12px; /* Esquinas redondeadas elegantes */
             height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
             transition: all 0.4s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave para darle profundidad */
         }
 
         .marca-box img {
             max-width: 100%;
-            max-height: 50px;
+            max-height: 55px;
             width: auto;
-            filter: grayscale(1) brightness(1.5); /* Logos en escala de grises clara */
-            opacity: 0.7;
+            /* Eliminamos el filtro de blanco para que se vean los colores reales */
+            filter: grayscale(0.2); 
+            opacity: 0.9;
             transition: all 0.4s ease;
         }
 
-        /* Efecto al pasar el mouse sobre el recuadro */
+        /* Efecto al pasar el mouse */
         .marca-box:hover {
-            background-color: #151515;
-            border-color: var(--cian-matech); /* El borde brilla en el color de tu marca */
+            background-color: #ffffff; /* Blanco puro al resaltar */
+            border-color: var(--cian-matech);
             transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 168, 193, 0.2); /* Brillo sutil del color de tu marca */
         }
 
         .marca-box:hover img {
-            filter: grayscale(0) brightness(1); /* El logo recupera su color original */
+            filter: grayscale(0); /* Color 100% real al pasar el mouse */
             opacity: 1;
-        }
-
-        @media (max-width: 480px) {
-            .grid-marcas {
-                grid-template-columns: repeat(2, 1fr); /* 2 columnas en móviles */
-                gap: 1rem;
-            }
-            .marca-box { height: 80px; padding: 15px; }
+            transform: scale(1.05);
         }
 
 /* --- ESTILOS DE FAQ (MODO ACORDEÓN) --- */
