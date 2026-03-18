@@ -235,6 +235,26 @@ section {
         .faq-item.active .faq-answer {
             display: block;
         }
+
+/* --- TÍTULOS DE SECCIÓN UNIFICADOS --- */
+        .section-title { 
+            text-align: center; 
+            font-size: 2.2rem; /* Tamaño simétrico */
+            margin-bottom: 3rem; 
+            text-transform: uppercase; 
+            color: var(--cian-matech); /* Color distintivo de MATECH */
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        /* Ajuste para móviles (Simetría en pantallas pequeñas) */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+        }
+
 /* --- ESTILOS DEL MENÚ DESPLEGABLE (DROPDOWN) --- */
         .dropdown {
     position: relative;
@@ -409,8 +429,8 @@ img {
     </div>
 </section>
 
-	<section id="marcas" style="background-color: #050505; padding: 4rem 10%;">
-    <h2 class="section-title" style="font-size: 1.1rem; color: var(--gris-texto); margin-bottom: 3rem; letter-spacing: 2px;">Aliados Tecnológicos</h2>
+	<section id="marcas" style="background-color: #050505; padding: 5rem 10%;">
+    <h2 class="section-title">Partners Tecnológicos</h2>
     <div class="grid-marcas">
         
         <div class="marca-box">
