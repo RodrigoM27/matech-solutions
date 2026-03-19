@@ -271,7 +271,10 @@
                 <input type="text" name="name" class="form-input" placeholder="Nombre completo" required>
                 <input type="email" name="email" class="form-input" placeholder="Correo electrónico" required>
                 <textarea name="message" class="form-input" rows="5" placeholder="¿En qué podemos ayudarle?" required></textarea>
-                <button type="submit" class="btn-cta" style="width: 100%; border: none; cursor: pointer;">ENVIAR MENSAJE</button>
+                <button type="submit" id="btn-submit" class="btn-cta" style="width: 100%; border: none; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;">
+    <span id="btn-text">ENVIAR MENSAJE</span>
+    <i id="btn-loader" class="fas fa-spinner fa-spin" style="display: none; font-size: 1.2rem;"></i>
+</button>
             </form>
         </div>
     </section>
@@ -298,6 +301,23 @@
                 item.classList.toggle('active');
             });
         });
+
+	// --- LÓGICA DE CARGA EN EL FORMULARIO ---
+    const formulario = document.querySelector('form');
+    const btnSubmit = document.getElementById('btn-submit');
+    const btnText = document.getElementById('btn-text');
+    const btnLoader = document.getElementById('btn-loader');
+
+    formulario.addEventListener('submit', function() {
+        // 1. Deshabilitar el botón para evitar múltiples envíos
+        btnSubmit.style.pointerEvents = 'none';
+        btnSubmit.style.opacity = '0.8';
+
+        // 2. Cambiar el texto y mostrar el spinner
+        btnText.innerText = 'ENVIANDO...';
+        btnLoader.style.display = 'inline-block';
+    });
+
     </script>
 </body>
 </html>
