@@ -28,35 +28,20 @@
         .brand-banner { width: 100%; background-color: var(--negro-puro); padding: 20px 0; text-align: center; }
         .brand-banner img { max-width: 90%; width: 400px; height: auto; }
 
-        /* /* --- NAVEGACIÓN MÓVIL (SCROLL LATERAL) --- */
-        @media (max-width: 768px) {
-            header {
-                padding: 0.5rem 0; /* Menos espacio vertical en móvil */
-            }
-            
-            nav {
-                width: 100%;
-                overflow-x: auto; /* Permite el deslizamiento lateral */
-                -webkit-overflow-scrolling: touch; /* Suavidad en iPhone */
-            }
-
-            nav ul {
-                display: flex;
-                justify-content: flex-start; /* Alinea los items al inicio para que el usuario deslice */
-                gap: 1.5rem;
-                padding: 0 5% 0.5rem 5%; /* Espaciado lateral para que el primer item no choque al borde */
-                white-space: nowrap; /* Evita que los textos salten de línea */
-            }
-
-            /* Ocultar la barra de scroll para que se vea limpio */
-            nav::-webkit-scrollbar {
-                display: none;
-            }
-
-            nav ul li a {
-                font-size: 0.75rem; /* Letra un poco más pequeña para que entren más items */
-            }
+        /* --- NAVEGACIÓN STICKY --- */
+        header { 
+            background-color: rgba(0, 0, 0, 0.95); 
+            padding: 0.8rem 5%; 
+            display: flex; 
+            justify-content: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid #222; 
         }
+        nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        nav ul li a { color: var(--blanco); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
+        nav ul li a:hover { color: var(--cian-matech); }
 
         /* DROPDOWN */
         .dropdown { position: relative; }
@@ -81,15 +66,6 @@
             text-transform: none !important;
         }
         .dropdown-content a:hover { background-color: #111; color: var(--cian-matech) !important; padding-left: 25px; }
-
-        @media (max-width: 768px) {
-            .dropdown-content {
-                position: fixed; /* En móvil, que flote respecto a la pantalla */
-                left: 5%;
-                right: 5%;
-                width: auto;
-            }
-        }
 
         /* --- HERO --- */
         .hero { 
