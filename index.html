@@ -6,7 +6,7 @@
     <title>MATECH SOLUTIONS | Conectividad Empresarial</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root {
@@ -18,27 +18,17 @@
             --whatsapp-green: #25D366;
         }
 
+        /* --- RESET Y GENERALES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-
-        section { scroll-margin-top: 80px; }
-
         body { background-color: var(--negro-puro); color: var(--blanco); line-height: 1.6; overflow-x: hidden; }
+        section { padding: 5rem 10%; scroll-margin-top: 80px; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 3rem; text-transform: uppercase; color: var(--cian-matech); font-weight: 700; letter-spacing: 2px; }
 
-        /* --- LOGO BANNER SUPERIOR --- */
-        .brand-banner { 
-            width: 100%; 
-            background-color: var(--negro-puro); 
-            padding: 20px 0; 
-            text-align: center; 
-        }
+        /* --- LOGO BANNER --- */
+        .brand-banner { width: 100%; background-color: var(--negro-puro); padding: 20px 0; text-align: center; }
+        .brand-banner img { max-width: 90%; width: 400px; height: auto; }
 
-        .brand-banner img { 
-            max-width: 90%; 
-            width: 400px; 
-            height: auto; 
-        }
-
-        /* --- HEADER Y NAVEGACIÓN (STICKY) --- */
+        /* --- NAVEGACIÓN STICKY --- */
         header { 
             background-color: rgba(0, 0, 0, 0.95); 
             padding: 0.8rem 5%; 
@@ -48,130 +38,94 @@
             top: 0; 
             z-index: 1000; 
             border-bottom: 1px solid #222; 
-            width: 100%;
         }
-
-        nav { width: 100%; max-width: 1200px; }
-
-        nav ul { 
-            display: flex; 
-            list-style: none; 
-            gap: 2rem; 
-            justify-content: center;
-            align-items: center;
-        }
-
-        nav ul li a { 
-            color: var(--blanco); 
-            text-decoration: none; 
-            font-size: 0.85rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1.5px; 
-            transition: color 0.3s; 
-        }
-
+        nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        nav ul li a { color: var(--blanco); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
         nav ul li a:hover { color: var(--cian-matech); }
 
-        /* --- SCROLL HORIZONTAL EN MÓVILES --- */
-        @media (max-width: 768px) {
-            nav ul {
-                justify-content: flex-start;
-                overflow-x: auto;
-                white-space: nowrap;
-                padding: 0.5rem 0;
-                gap: 1.2rem;
-                -webkit-overflow-scrolling: touch;
-            }
-            nav ul::-webkit-scrollbar { display: none; }
-            nav ul li a { font-size: 0.75rem; }
+        /* DROPDOWN */
+        .dropdown { position: relative; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #0a0a0a;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+            border: 1px solid #222;
+            border-radius: 8px;
+            top: 100%;
+            left: 0;
+            padding: 10px 0;
         }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-content a {
+            color: var(--gris-texto) !important;
+            padding: 12px 20px;
+            display: block;
+            font-size: 0.8rem !important;
+            text-transform: none !important;
+        }
+        .dropdown-content a:hover { background-color: #111; color: var(--cian-matech) !important; padding-left: 25px; }
 
         /* --- HERO --- */
         .hero { 
             min-height: 75vh; 
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
-                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070') 
-                        no-repeat center center/cover; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center; 
-            padding: 3rem 5%; 
-            gap: 2rem; 
+                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070') no-repeat center/cover; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 3rem 5%; gap: 2rem; 
         }
+        .hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); text-transform: uppercase; }
+        .btn-cta { background-color: var(--cian-matech); color: var(--negro-puro); padding: 1rem 2.5rem; text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s; border: none; }
+        .btn-cta:hover { transform: scale(1.05); cursor: pointer; }
 
-        .hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); text-transform: uppercase; line-height: 1.2; }
-        .hero p { font-size: clamp(0.9rem, 2vw, 1.2rem); max-width: 600px; color: var(--gris-texto); }
-
-        .btn-cta { background-color: var(--cian-matech); color: var(--negro-puro); padding: 1rem 2.5rem; text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s; display: inline-block; }
-        .btn-cta:hover { transform: scale(1.05); }
-
-        /* --- SECCIONES GENERALES --- */
-        section { padding: 5rem 10%; }
-        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 3rem; text-transform: uppercase; color: var(--cian-matech); font-weight: 700; letter-spacing: 2px; }
-
-        /* --- SOLUCIONES --- */
+        /* --- GRID SOLUCIONES --- */
         .grid-soluciones { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
         .card { background-color: var(--negro-suave); padding: 3rem; border-radius: 12px; text-align: center; border: 1px solid #222; transition: 0.3s; }
         .card:hover { border-color: var(--cian-matech); transform: translateY(-5px); }
         .card i { font-size: 3.5rem; color: var(--cian-matech); margin-bottom: 1.5rem; }
 
-        /* --- PROYECTOS --- */
-        .grid-proyectos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
-        .proyecto-card { background-color: #0a0a0a; border-radius: 12px; overflow: hidden; border: 1px solid #1a1a1a; transition: 0.3s; }
-        .proyecto-card:hover { border-color: var(--cian-matech); transform: translateY(-8px); }
-        .proyecto-img { width: 100%; height: 220px; overflow: hidden; }
-        .proyecto-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .proyecto-card:hover .proyecto-img img { transform: scale(1.1); }
+        /* --- GRID PROYECTOS --- */
+        .grid-proyectos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .proyecto-card { background: var(--negro-suave); border-radius: 12px; overflow: hidden; border: 1px solid #222; }
+        .proyecto-img img { width: 100%; height: 200px; object-fit: cover; }
         .proyecto-info { padding: 1.5rem; }
-        .proyecto-info span { color: var(--cian-matech); font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        .proyecto-info span { color: var(--cian-matech); font-size: 0.75rem; text-transform: uppercase; font-weight: bold; }
+        .proyecto-info h3 { margin: 0.5rem 0; font-size: 1.2rem; color: var(--blanco); }
+        .proyecto-info p { color: var(--gris-texto); font-size: 0.9rem; }
 
         /* --- MARCAS --- */
-        .grid-marcas { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; justify-content: center; }
+        .grid-marcas { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; }
         .marca-box { background-color: #f5f5f5; border-radius: 12px; height: 100px; display: flex; align-items: center; justify-content: center; padding: 20px; transition: 0.4s; }
-        .marca-box img { max-width: 100%; max-height: 55px; filter: grayscale(0.2); opacity: 0.9; }
+        .marca-box img { max-width: 100%; max-height: 55px; filter: grayscale(0.2); }
         .marca-box:hover { background-color: #fff; transform: translateY(-5px); border: 1px solid var(--cian-matech); }
 
-        /* --- FAQ ACORDEÓN --- */
-        .faq-item { background-color: #0a0a0a; border: 1px solid #1a1a1a; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; }
-        .faq-question { padding: 1.5rem; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; color: var(--blanco); }
+        /* --- FAQ --- */
+        .faq-item { background-color: #0a0a0a; border: 1px solid #1a1a1a; margin-bottom: 1rem; border-radius: 8px; }
+        .faq-question { padding: 1.5rem; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
         .faq-answer { padding: 0 1.5rem 1.5rem; color: var(--gris-texto); display: none; }
         .faq-item.active .faq-answer { display: block; }
         .faq-item.active .faq-question { color: var(--cian-matech); }
 
         /* --- CONTACTO --- */
         .contacto-container { max-width: 600px; margin: 0 auto; background: var(--negro-suave); padding: 3rem; border-radius: 15px; border: 1px solid #222; }
-        .form-input { width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; border-radius: 5px; margin-bottom: 1.5rem; outline: none; }
+        .form-input { width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; border-radius: 5px; margin-bottom: 1.5rem; }
+
+        /* --- WHATSAPP --- */
+        .btn-whatsapp { position: fixed; bottom: 30px; right: 30px; background-color: var(--whatsapp-green); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 2000; animation: pulse-whatsapp 2s infinite; text-decoration: none; }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
         /* --- FOOTER --- */
         footer { background-color: #050505; padding: 4rem 10% 2rem; text-align: center; border-top: 1px solid #1a1a1a; }
-        .footer-logo img { width: 220px; margin-bottom: 2rem; }
-        .social-icons a { 
-            color: var(--cian-matech); 
-            font-size: 1.8rem; 
-            margin: 0 12px; /* Reducimos un poco el margen lateral */
-            transition: 0.3s; 
-            display: inline-block;
+        .social-icons a { color: var(--cian-matech); font-size: 1.8rem; margin: 0 12px; transition: 0.3s; display: inline-block; }
+        .social-icons a:hover { color: var(--blanco); transform: translateY(-5px); }
+
+        /* RESPONSIVE NAV */
+        @media (max-width: 768px) {
+            nav ul { justify-content: flex-start; overflow-x: auto; white-space: nowrap; padding: 0.5rem 0; gap: 1.2rem; }
+            nav ul::-webkit-scrollbar { display: none; }
+            .section-title { font-size: 1.8rem; }
+            section { padding: 3rem 5%; }
         }
-
-        .social-icons a:hover { 
-            color: var(--blanco); 
-            transform: translateY(-5px); /* Efecto de salto al pasar el mouse */
-        }
-
-        @media (max-width: 480px) {
-            .social-icons a {
-                font-size: 1.5rem; /* Iconos un poco más pequeños en móviles mini */
-                margin: 0 8px;
-            }
-        }
-
-        /* --- WHATSAPP PULSE --- */
-        .btn-whatsapp { position: fixed; bottom: 30px; right: 30px; background-color: var(--whatsapp-green); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; z-index: 2000; animation: pulse-whatsapp 2s infinite; }
-        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-
-        @media (max-width: 768px) { .section-title { font-size: 1.8rem; } section { padding: 3rem 5%; } }
     </style>
 </head>
 <body>
@@ -184,7 +138,14 @@
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="#soluciones">Soluciones</a></li>
+                <li class="dropdown">
+                    <a href="#soluciones" class="dropbtn">Soluciones <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#soluciones"><i class="fas fa-video"></i> Cámaras CCTV</a></li>
+                        <li><a href="#soluciones"><i class="fas fa-wifi"></i> Redes y WiFi</a></li>
+                        <li><a href="#soluciones"><i class="fas fa-laptop-medical"></i> Soporte Técnico</a></li>
+                    </ul>
+                </li>
                 <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#faq">Preguntas</a></li>
                 <li><a href="#contacto">Contacto</a></li>
@@ -201,26 +162,10 @@
     <section id="soluciones">
         <h2 class="section-title">Nuestras Soluciones</h2>
         <div class="grid-soluciones">
-            <div class="card">
-                <i class="fas fa-wifi"></i>
-                <h3>Redes Inalámbricas</h3>
-                <p>Instalación y optimización de redes WiFi corporativas.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-microchip"></i>
-                <h3>Plataformas IoT</h3>
-                <p>Integración de tecnología inteligente para su negocio.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-desktop"></i>
-                <h3>Hardware y Software</h3>
-                <p>Mantenimiento preventivo y soporte técnico especializado.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-shield-halved"></i>
-                <h3>Seguridad CCTV</h3>
-                <p>Venta e instalación de cámaras de seguridad de alta gama.</p>
-            </div>
+            <div class="card"><i class="fas fa-wifi"></i><h3>Redes Inalámbricas</h3><p>Instalación y optimización de redes WiFi corporativas.</p></div>
+            <div class="card"><i class="fas fa-microchip"></i><h3>Plataformas IoT</h3><p>Integración de tecnología inteligente para su negocio.</p></div>
+            <div class="card"><i class="fas fa-desktop"></i><h3>Hardware y Software</h3><p>Mantenimiento preventivo y soporte técnico especializado.</p></div>
+            <div class="card"><i class="fas fa-shield-halved"></i><h3>Seguridad CCTV</h3><p>Venta e instalación de cámaras de seguridad de alta gama.</p></div>
         </div>
     </section>
 
@@ -231,24 +176,24 @@
                 <div class="proyecto-img"><img src="https://images.unsplash.com/photo-1557597774-9d2739f85a94?auto=format&fit=crop&q=80&w=800" alt="CCTV"></div>
                 <div class="proyecto-info">
                     <span>Seguridad Electrónica</span>
-                    <h3>Sistema CCTV IP - Hikvision</h3>
-                    <p>Instalación de 8 cámaras con monitoreo remoto para almacén logístico.</p>
+                    <h3>Seguridad Inteligente para Centros Logísticos</h3>
+                    <p>Implementación de ecosistema IP Hikvision con analítica de video y acceso remoto blindado 24/7.</p>
                 </div>
             </div>
             <div class="proyecto-card">
                 <div class="proyecto-img"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc48?auto=format&fit=crop&q=80&w=800" alt="WiFi"></div>
                 <div class="proyecto-info">
                     <span>Conectividad</span>
-                    <h3>Optimización WiFi Corporativo</h3>
-                    <p>Access Points de alta densidad para oficinas administrativas.</p>
+                    <h3>Infraestructura de Red de Alta Disponibilidad</h3>
+                    <p>Despliegue de Access Points de alta densidad para eliminar puntos muertos y garantizar estabilidad.</p>
                 </div>
             </div>
             <div class="proyecto-card">
                 <div class="proyecto-img"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" alt="IT"></div>
                 <div class="proyecto-info">
                     <span>Soporte Técnico</span>
-                    <h3>Mantenimiento de Servidores</h3>
-                    <p>Optimización y limpieza técnica para centro de datos.</p>
+                    <h3>Continuidad Operativa y Respaldo IT</h3>
+                    <p>Mantenimiento preventivo de servidores críticos, reduciendo riesgos de caídas en un 95%.</p>
                 </div>
             </div>
         </div>
@@ -284,107 +229,83 @@
         <h2 class="section-title">Contacto</h2>
         <div class="contacto-container">
             <form action="https://formspree.io/f/xaqpllld" method="POST">
-                <input type="hidden" name="_next" value="https://RodrigoM27.github.io/matech-solutions/gracias.html">
                 <input type="text" name="name" class="form-input" placeholder="Nombre completo" required>
                 <input type="email" name="email" class="form-input" placeholder="Correo electrónico" required>
                 <textarea name="message" class="form-input" rows="5" placeholder="¿En qué podemos ayudarle?" required></textarea>
-                <button type="submit" id="btn-submit" class="btn-cta" style="width: 100%; border: none; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;">
-    <span id="btn-text">ENVIAR MENSAJE</span>
-    <i id="btn-loader" class="fas fa-spinner fa-spin" style="display: none; font-size: 1.2rem;"></i>
-</button>
+                <button type="submit" id="btn-submit" class="btn-cta" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 10px;">
+                    <span id="btn-text">ENVIAR MENSAJE</span>
+                    <i id="btn-loader" class="fas fa-spinner fa-spin" style="display: none;"></i>
+                </button>
             </form>
         </div>
     </section>
 
-    <a href="https://wa.me/51925517455?text=Hola%20MATECH%20SOLUTIONS,%20deseo%20solicitar%20una%20cotización." class="btn-whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/51925517455?text=Hola%20MATECH%20SOLUTIONS" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <footer>
         <div class="footer-logo"><img src="logo-matech.jpeg" alt="MATECH Logo"></div>
         <div class="social-icons">
-            <a href="https://www.linkedin.com/in/TU_PERFIL" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.facebook.com/TU_PAGINA" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.tiktok.com/@TU_USUARIO" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.instagram.com/TU_USUARIO" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
         <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #555;">&copy; 2026 MATECH SOLUTIONS. Lima, Perú.</p>
     </footer>
 
     <script>
-        // LÓGICA ACORDEÓN FAQ
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                item.classList.toggle('active');
+        // FAQ ACORDEÓN
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
+        });
+
+        // ENVÍO FORMULARIO (AJAX)
+        const formulario = document.querySelector('form');
+        const btnSubmit = document.getElementById('btn-submit');
+        const btnText = document.getElementById('btn-text');
+        const btnLoader = document.getElementById('btn-loader');
+
+        formulario.addEventListener('submit', function(e) {
+            e.preventDefault();
+            btnSubmit.disabled = true;
+            btnSubmit.style.opacity = '0.7';
+            btnText.innerText = 'ENVIANDO...';
+            btnLoader.style.display = 'inline-block';
+
+            fetch(formulario.action, {
+                method: 'POST',
+                body: new FormData(formulario),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    formulario.reset();
+                    window.location.href = "gracias.html";
+                } else {
+                    alert("Error. Intenta de nuevo.");
+                    resetBtn();
+                }
+            }).catch(() => { alert("Error de conexión."); resetBtn(); });
+        });
+
+        function resetBtn() {
+            btnSubmit.disabled = false; btnSubmit.style.opacity = '1';
+            btnText.innerText = 'ENVIAR MENSAJE'; btnLoader.style.display = 'none';
+        }
+
+        // NAVEGACIÓN LIMPIA (HISTORY REPLACE)
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const section = document.querySelector(targetId);
+                    if (section) {
+                        window.scrollTo({ top: section.offsetTop - 80, behavior: 'smooth' });
+                        history.replaceState(null, null, targetId);
+                    }
+                }
             });
         });
-
-	// --- LÓGICA DE CARGA EN EL FORMULARIO ---
-    const formulario = document.querySelector('form');
-    const btnSubmit = document.getElementById('btn-submit');
-    const btnText = document.getElementById('btn-text');
-    const btnLoader = document.getElementById('btn-loader');
-
-    formulario.addEventListener('submit', function(e) {
-        e.preventDefault(); // Detiene el envío normal para usar AJAX
-
-        // 1. Efecto visual de carga
-        btnSubmit.disabled = true;
-        btnSubmit.style.opacity = '0.7';
-        btnText.innerText = 'ENVIANDO...';
-        btnLoader.style.display = 'inline-block';
-
-        // 2. Enviar los datos a Formspree vía AJAX
-        const data = new FormData(formulario);
-        
-        fetch(formulario.action, {
-            method: formulario.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(response => {
-            if (response.ok) {
-                // EXITO: Limpiar formulario y redirigir
-                formulario.reset(); 
-                window.location.href = "gracias.html"; 
-            } else {
-                alert("Hubo un error al enviar. Por favor, intenta de nuevo.");
-                resetBtn();
-            }
-        }).catch(error => {
-            alert("Error de conexión.");
-            resetBtn();
-        });
-    });
-
-    function resetBtn() {
-        btnSubmit.disabled = false;
-        btnSubmit.style.opacity = '1';
-        btnText.innerText = 'ENVIAR MENSAJE';
-        btnLoader.style.display = 'none';
-    }
-
-	// Evita que las anclas (#) ensucien el historial del navegador
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId.startsWith('#')) {
-                e.preventDefault();
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 80, // Ajuste por el header fijo
-                        behavior: 'smooth'
-                    });
-                    // Cambia la URL sin agregar una entrada nueva al historial
-                    history.replaceState(null, null, targetId);
-                }
-            }
-        });
-    });
-
     </script>
 </body>
 </html>
