@@ -32,8 +32,20 @@ section {
         nav ul li a { color: var(--blanco); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.3s; }
         nav ul li a:hover { color: var(--cian-matech); }
 
-        .brand-banner { width: 100%; background-color: var(--negro-puro); padding: 40px 0 20px 0; text-align: center; }
-        .brand-banner img { max-width: 80%; width: 600px; height: auto; display: inline-block; }
+        .brand-banner { 
+            width: 100%; 
+            background-color: var(--negro-puro); 
+            padding: 20px 0; 
+            text-align: center; 
+            display: flex;
+            justify-content: center;
+        }
+
+        .brand-banner img { 
+            max-width: 90%; /* Evita que choque con los bordes del cel */
+            width: 450px; 
+            height: auto; 
+        }
 
         /* --- HERO CORREGIDO (ADAPTABLE) --- */
         .hero { 
@@ -388,27 +400,53 @@ img {
 </head>
 <body>
 
-    <header>
-    <nav>
-        <ul>
-    <li><a href="#">Inicio</a></li>
-    <li class="dropdown">
-        <a href="#soluciones" class="dropbtn" style="cursor: pointer;">
-            Soluciones <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 5px;"></i>
-        </a>
-        <div class="dropdown-content">
-            <a href="#soluciones">Redes Inalámbricas</a>
-            <a href="#proyectos">Proyectos Ejecutados</a>
-            <a href="#soluciones">Hardware y Software</a>
-            <a href="#faq">Mantenimiento Preventivo</a>
-            <a href="#contacto">Cámaras de Seguridad (CCTV)</a>
-        </div>
-    </li>
-    <li><a href="#faq">Preguntas</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-</ul>
-    </nav>
-</header>
+   /* --- HEADER ADAPTABLE (MOBILE FRIENDLY) --- */
+        header { 
+            background-color: rgba(0, 0, 0, 0.95); 
+            padding: 0.8rem 5%; 
+            display: flex; 
+            justify-content: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid #222; 
+            width: 100%;
+        }
+
+        nav {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 1.5rem; 
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- TRUCO DE SCROLL HORIZONTAL PARA MÓVILES --- */
+        @media (max-width: 768px) {
+            nav ul {
+                justify-content: flex-start; /* Alinea al inicio para el scroll */
+                overflow-x: auto; /* Permite el deslizamiento lateral */
+                white-space: nowrap; /* Evita que los ítems salten de línea */
+                padding: 0.5rem 0;
+                gap: 1.2rem;
+                -webkit-overflow-scrolling: touch; /* Scroll suave en iPhone */
+            }
+            
+            /* Oculta la barra de scroll para que se vea más limpio */
+            nav ul::-webkit-scrollbar {
+                display: none;
+            }
+
+            nav ul li a {
+                font-size: 0.75rem; /* Letra un poco más pequeña en móvil */
+                letter-spacing: 1px;
+            }
+        }
 
     <div class="brand-banner">
         <img src="logo-matech.jpeg" alt="MATECH SOLUTIONS Banner">
