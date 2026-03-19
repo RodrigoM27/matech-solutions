@@ -200,23 +200,32 @@
 
         /* --- TRUCO DE SCROLL HORIZONTAL PARA MÓVILES --- */
         @media (max-width: 768px) {
-            nav ul {
-                justify-content: flex-start; /* Alinea al inicio para el scroll */
-                overflow-x: visible; /* Permite el deslizamiento lateral */
-                white-space: nowrap; /* Evita que los ítems salten de línea */
-                padding: 0.5rem 0;
-                gap: 1.2rem;
-                -webkit-overflow-scrolling: touch; /* Scroll suave en iPhone */
-            }
-            
-            /* Oculta la barra de scroll para que se vea más limpio */
-            nav ul::-webkit-scrollbar {
-                display: none;
+            /* Permitimos que el nav deje salir contenido (el desplegable) */
+            nav {
+                overflow: visible; 
             }
 
-            nav ul li a {
-                font-size: 0.75rem; /* Letra un poco más pequeña en móvil */
-                letter-spacing: 1px;
+            /* El scroll lateral se aplica SOLO a la lista ul */
+            nav ul {
+                display: flex;
+                justify-content: flex-start;
+                overflow-x: auto; /* Aquí va el scroll ahora */
+                white-space: nowrap;
+                padding: 0.8rem 1rem;
+                gap: 1.2rem;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            nav ul::-webkit-scrollbar { display: none; }
+
+            /* El desplegable se posiciona justo debajo de su botón */
+            .dropdown-content {
+                position: absolute;
+                top: 100%; 
+                left: 0;
+                width: 240px; /* Ancho fijo para que no se estire */
+                background-color: #0a0a0a;
+                z-index: 2000;
             }
         }
 
@@ -467,6 +476,20 @@
         }
     });
 });
+
+        // CERRAR DESPLEGABLE AL TOCAR UN ITEM
+        document.querySelectorAll('.dropdown-content a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = link.closest('.dropdown-content');
+                // Ocultamos el menú momentáneamente
+                menu.style.display = 'none';
+                
+                // Lo rehabilitamos después de un breve instante para que el hover siga funcionando
+                setTimeout(() => {
+                    menu.style.display = '';
+                }, 500);
+            });
+        });
 
     </script>
 </body>
