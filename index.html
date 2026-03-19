@@ -308,14 +308,63 @@
     const btnText = document.getElementById('btn-text');
     const btnLoader = document.getElementById('btn-loader');
 
-    formulario.addEventListener('submit', function() {
-        // 1. Deshabilitar el botón para evitar múltiples envíos
-        btnSubmit.style.pointerEvents = 'none';
-        btnSubmit.style.opacity = '0.8';
+    formulario.addEventListener('submit', function(e) {
+        e.preventDefault(); // Detiene el envío normal para usar AJAX
 
-        // 2. Cambiar el texto y mostrar el spinner
+        // 1. Efecto visual de carga
+        btnSubmit.disabled = true;
+        btnSubmit.style.opacity = '0.7';
         btnText.innerText = 'ENVIANDO...';
         btnLoader.style.display = 'inline-block';
+
+        // 2. Enviar los datos a Formspree vía AJAX
+        const data = new FormData(formulario);
+        
+        fetch(formulario.action, {
+            method: formulario.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                // EXITO: Limpiar formulario y redirigir
+                formulario.reset(); 
+                window.location.href = "gracias.html"; 
+            } else {
+                alert("Hubo un error al enviar. Por favor, intenta de nuevo.");
+                resetBtn();
+            }
+        }).catch(error => {
+            alert("Error de conexión.");
+            resetBtn();
+        });
+    });
+
+    function resetBtn() {
+        btnSubmit.disabled = false;
+        btnSubmit.style.opacity = '1';
+        btnText.innerText = 'ENVIAR MENSAJE';
+        btnLoader.style.display = 'none';
+    }
+
+	// Evita que las anclas (#) ensucien el historial del navegador
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80, // Ajuste por el header fijo
+                        behavior: 'smooth'
+                    });
+                    // Cambia la URL sin agregar una entrada nueva al historial
+                    history.replaceState(null, null, targetId);
+                }
+            }
+        });
     });
 
     </script>
