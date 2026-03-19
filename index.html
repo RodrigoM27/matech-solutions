@@ -219,6 +219,28 @@
                 letter-spacing: 1px;
             }
         }
+
+        /* --- SOLUCIÓN DESPLEGABLE EN MÓVIL --- */
+        @media (max-width: 768px) {
+            /* Evita que el submenú quede atrapado en el scroll lateral */
+            .dropdown-content {
+                position: fixed; 
+                top: 60px; /* Ajusta según la altura de tu header */
+                left: 10%;
+                right: 10%;
+                width: auto;
+                min-width: unset;
+                background-color: rgba(10, 10, 10, 0.98);
+                box-shadow: 0px 15px 30px rgba(0,0,0,0.8);
+            }
+
+            /* Mejora la activación por toque en móviles */
+            .dropdown:active .dropdown-content,
+            .dropdown:focus .dropdown-content {
+                display: block;
+            }
+        }
+
     </style>
 </head>
 <body>
