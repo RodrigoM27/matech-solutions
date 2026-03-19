@@ -147,8 +147,25 @@
         /* --- FOOTER --- */
         footer { background-color: #050505; padding: 4rem 10% 2rem; text-align: center; border-top: 1px solid #1a1a1a; }
         .footer-logo img { width: 220px; margin-bottom: 2rem; }
-        .social-icons a { color: var(--cian-matech); font-size: 1.8rem; margin: 0 10px; transition: 0.3s; }
-        .social-icons a:hover { color: var(--blanco); transform: scale(1.2); display: inline-block; }
+        .social-icons a { 
+            color: var(--cian-matech); 
+            font-size: 1.8rem; 
+            margin: 0 12px; /* Reducimos un poco el margen lateral */
+            transition: 0.3s; 
+            display: inline-block;
+        }
+
+        .social-icons a:hover { 
+            color: var(--blanco); 
+            transform: translateY(-5px); /* Efecto de salto al pasar el mouse */
+        }
+
+        @media (max-width: 480px) {
+            .social-icons a {
+                font-size: 1.5rem; /* Iconos un poco más pequeños en móviles mini */
+                margin: 0 8px;
+            }
+        }
 
         /* --- WHATSAPP PULSE --- */
         .btn-whatsapp { position: fixed; bottom: 30px; right: 30px; background-color: var(--whatsapp-green); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; z-index: 2000; animation: pulse-whatsapp 2s infinite; }
@@ -286,9 +303,10 @@
     <footer>
         <div class="footer-logo"><img src="logo-matech.jpeg" alt="MATECH Logo"></div>
         <div class="social-icons">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/TU_PERFIL" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/TU_PAGINA" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@TU_USUARIO" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/TU_USUARIO" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
         <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #555;">&copy; 2026 MATECH SOLUTIONS. Lima, Perú.</p>
     </footer>
