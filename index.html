@@ -241,6 +241,22 @@
             }
         }
 
+            /* Ocultar el menú después de hacer clic en un ítem */
+            .dropdown-content.hide {
+                display: none !important;
+        }
+
+@media (max-width: 768px) {
+    .dropdown-content {
+        position: fixed;
+        top: 65px; /* Ajustado para que no tape el logo del banner */
+        left: 5%;
+        right: 5%;
+        width: 90%;
+        z-index: 2000;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -421,6 +437,37 @@
                 }
             });
         });
+
+        // CONTROL DE SUBMENÚ (SOLUCIONES)
+        document.querySelectorAll('.dropdown-content a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+        
+        // 1. Si es un enlace interno (#), evitamos el salto brusco
+        if (targetId.startsWith('#')) {
+            e.preventDefault();
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                // 2. Cerramos el menú visualmente
+                const parentContent = this.closest('.dropdown-content');
+                parentContent.style.display = 'none';
+                
+                // 3. Scroll suave a la sección
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+
+                // 4. Quitamos el 'none' después de un momento para que vuelva a funcionar el hover
+                setTimeout(() => {
+                    parentContent.style.display = '';
+                }, 500);
+            }
+        }
+    });
+});
+
     </script>
 </body>
 </html>
