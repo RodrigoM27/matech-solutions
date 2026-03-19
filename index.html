@@ -85,13 +85,56 @@
         .card i { font-size: 3.5rem; color: var(--cian-matech); margin-bottom: 1.5rem; }
 
         /* --- GRID PROYECTOS --- */
-        .grid-proyectos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .proyecto-card { background: var(--negro-suave); border-radius: 12px; overflow: hidden; border: 1px solid #222; }
-        .proyecto-img img { width: 100%; height: 200px; object-fit: cover; }
-        .proyecto-info { padding: 1.5rem; }
-        .proyecto-info span { color: var(--cian-matech); font-size: 0.75rem; text-transform: uppercase; font-weight: bold; }
-        .proyecto-info h3 { margin: 0.5rem 0; font-size: 1.2rem; color: var(--blanco); }
-        .proyecto-info p { color: var(--gris-texto); font-size: 0.9rem; }
+        /* --- EFECTO VISUAL EN PROYECTOS --- */
+        .grid-proyectos { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+        }
+
+        .proyecto-card { 
+            position: relative; /* Necesario para que el texto flote encima */
+            border-radius: 12px; 
+            overflow: hidden; 
+            border: 1px solid #222; 
+            height: 350px; /* Altura fija para que todos sean iguales */
+        }
+
+        .proyecto-img img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: 0.5s; 
+        }
+
+        .proyecto-info { 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.2) 100%); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-end; 
+            padding: 2rem; 
+            transition: 0.4s;
+            opacity: 0.8; /* Se ve un poco siempre */
+        }
+
+        /* EFECTO AL PASAR EL MOUSE (O TOCAR EN MÓVIL) */
+        .proyecto-card:hover .proyecto-info {
+            background: linear-gradient(to top, rgba(0, 168, 193, 0.8) 0%, rgba(0,0,0,0.6) 100%);
+            opacity: 1;
+        }
+
+        .proyecto-card:hover .proyecto-img img {
+            transform: scale(1.1); /* Zoom suave a la imagen */
+        }
+
+        .proyecto-info span { color: var(--blanco); font-size: 0.7rem; font-weight: bold; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .proyecto-info h3 { color: var(--blanco); margin: 0.5rem 0; font-size: 1.3rem; }
+        .proyecto-info p { color: #e0e0e0; font-size: 0.9rem; line-height: 1.4; }
 
         /* --- MARCAS --- */
         .grid-marcas { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; }
@@ -118,6 +161,19 @@
         footer { background-color: #050505; padding: 4rem 10% 2rem; text-align: center; border-top: 1px solid #1a1a1a; }
         .social-icons a { color: var(--cian-matech); font-size: 1.8rem; margin: 0 12px; transition: 0.3s; display: inline-block; }
         .social-icons a:hover { color: var(--blanco); transform: translateY(-5px); }
+
+        /* Tamaño controlado para el logo del pie de página */
+        .footer-logo img { 
+            width: 180px; /* Ajusta este número según tu gusto */
+            height: auto; 
+            margin-bottom: 1.5rem; 
+            opacity: 0.8; /* Un toque sutil para que no brille tanto como el de arriba */
+            transition: 0.3s;
+        }
+
+        .footer-logo img:hover {
+            opacity: 1; /* Se ilumina al pasar el mouse */
+        }
 
         /* RESPONSIVE NAV */
         @media (max-width: 768px) {
