@@ -38,10 +38,17 @@
             top: 0; 
             z-index: 1000; 
             border-bottom: 1px solid #222; 
+            width: 100%;
         }
-        nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        nav { width: 100%; max-width: 1200px; }
         nav ul li a { color: var(--blanco); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
-        nav ul li a:hover { color: var(--cian-matech); }
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 1.5rem; 
+            justify-content: center;
+            align-items: center;
+        }
 
         /* DROPDOWN */
         .dropdown { position: relative; }
@@ -179,12 +186,26 @@
             opacity: 1; /* Se ilumina al pasar el mouse */
         }
 
-        /* RESPONSIVE NAV */
+        /* --- TRUCO DE SCROLL HORIZONTAL PARA MÓVILES --- */
         @media (max-width: 768px) {
-            nav ul { justify-content: flex-start; overflow-x: auto; white-space: nowrap; padding: 0.5rem 0; gap: 1.2rem; }
-            nav ul::-webkit-scrollbar { display: none; }
-            .section-title { font-size: 1.8rem; }
-            section { padding: 3rem 5%; }
+            nav ul {
+                justify-content: flex-start; /* Alinea al inicio para el scroll */
+                overflow-x: auto; /* Permite el deslizamiento lateral */
+                white-space: nowrap; /* Evita que los ítems salten de línea */
+                padding: 0.5rem 0;
+                gap: 1.2rem;
+                -webkit-overflow-scrolling: touch; /* Scroll suave en iPhone */
+            }
+            
+            /* Oculta la barra de scroll para que se vea más limpio */
+            nav ul::-webkit-scrollbar {
+                display: none;
+            }
+
+            nav ul li a {
+                font-size: 0.75rem; /* Letra un poco más pequeña en móvil */
+                letter-spacing: 1px;
+            }
         }
     </style>
 </head>
