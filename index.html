@@ -20,387 +20,25 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 
-	/* Esto hace que al saltar a una sección, se detenga un poco antes del borde superior */
-section {
-    scroll-margin-top: 80px; 
-}
+        section { scroll-margin-top: 80px; }
 
-        body { background-color: var(--negro-puro); color: var(--blanco); line-height: 1.6; }
+        body { background-color: var(--negro-puro); color: var(--blanco); line-height: 1.6; overflow-x: hidden; }
 
-        header { background-color: rgba(0, 0, 0, 0.9); padding: 1rem 5%; display: flex; justify-content: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
-        nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav ul li a { color: var(--blanco); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.3s; }
-        nav ul li a:hover { color: var(--cian-matech); }
-
+        /* --- LOGO BANNER SUPERIOR --- */
         .brand-banner { 
             width: 100%; 
             background-color: var(--negro-puro); 
             padding: 20px 0; 
             text-align: center; 
-            display: flex;
-            justify-content: center;
         }
 
         .brand-banner img { 
-            max-width: 90%; /* Evita que choque con los bordes del cel */
-            width: 450px; 
+            max-width: 90%; 
+            width: 400px; 
             height: auto; 
         }
 
-        /* --- HERO CORREGIDO (ADAPTABLE) --- */
-        .hero { 
-            min-height: 70vh; /* Cambiamos height por min-height */
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
-                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070') 
-                        no-repeat center center/cover; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center; 
-            padding: 3rem 5%; /* Añadimos padding arriba/abajo para móviles */
-            gap: 2rem; /* Espacio uniforme entre eslogan y botón */
-        }
-
-        .hero h1 { 
-            font-size: clamp(1.8rem, 5vw, 3rem); /* Fuente fluida que se ajusta sola */
-            margin: 0; 
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: clamp(0.9rem, 2vw, 1.2rem);
-            max-width: 600px;
-            color: var(--gris-texto);
-        }
-
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
-
-        .btn-cta { background-color: var(--cian-matech); color: var(--negro-puro); padding: 1rem 2.5rem; text-decoration: none; font-weight: bold; border-radius: 5px; transition: transform 0.3s; display: inline-block; }
-        .btn-cta:hover { transform: scale(1.05); }
-
-        section { padding: 5rem 10%; }
-        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 3rem; text-transform: uppercase; }
-
-        .grid-soluciones { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
-        .card { background-color: var(--negro-suave); padding: 3rem; border-radius: 12px; text-align: center; border: 1px solid #222; transition: 0.3s; }
-        .card:hover { border-color: var(--cian-matech); }
-        
-        /* ESTILO PARA LOS ICONOS (IMPORTANTE) */
-        .card i { 
-            font-size: 3.5rem !important; 
-            color: var(--cian-matech) !important; 
-            margin-bottom: 1.5rem; 
-            display: inline-block; 
-        }
-
-        .contacto-container { max-width: 600px; margin: 0 auto; background: var(--negro-suave); padding: 3rem; border-radius: 15px; border: 1px solid #222; }
-        .form-group { margin-bottom: 1.5rem; text-align: left; }
-        .form-input { width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; border-radius: 5px; outline: none; }
-
-        .btn-whatsapp { position: fixed; bottom: 30px; right: 30px; background-color: var(--whatsapp-green); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; z-index: 2000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-
-        footer { background-color: #050505; padding: 4rem 10% 2rem; text-align: center; border-top: 1px solid #1a1a1a; }
-        .footer-logo img { width: 250px; margin-bottom: 2rem; }
-        .social-icons a { color: var(--cian-matech); font-size: 1.8rem; margin: 0 15px; text-decoration: none; transition: 0.3s; }
-        .social-icons a:hover { color: var(--blanco); }
-
-        @media (max-width: 768px) { .brand-banner img { width: 90%; } .hero h1 { font-size: 2rem; } section { padding: 3rem 5%; } }
-
-/* --- ESTILOS DE PROYECTOS (RESPONSIVE) --- */
-        .grid-proyectos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .proyecto-card {
-            background-color: #0a0a0a;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #1a1a1a;
-            transition: 0.3s;
-        }
-
-        .proyecto-card:hover {
-            border-color: var(--cian-matech);
-            transform: translateY(-8px);
-        }
-
-        .proyecto-img {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .proyecto-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
-
-        .proyecto-card:hover .proyecto-img img {
-            transform: scale(1.1);
-        }
-
-        .proyecto-info {
-            padding: 1.5rem;
-        }
-
-        .proyecto-info span {
-            color: var(--cian-matech);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .proyecto-info h3 {
-            margin: 0.5rem 0;
-            font-size: 1.3rem;
-        }
-
-        .proyecto-info p {
-            color: var(--gris-texto);
-            font-size: 0.9rem;
-        }
-
-        /* --- REFUERZO DE ADAPTABILIDAD GLOBAL --- */
-        @media (max-width: 1024px) {
-            section { padding: 4rem 5%; }
-            .hero h1 { font-size: 2.4rem; }
-        }
-
-        @media (max-width: 480px) {
-            .brand-banner img { width: 95%; }
-            .hero h1 { font-size: 1.8rem; }
-            .btn-cta { width: 100%; text-align: center; }
-            .grid-marcas { gap: 1rem; }
-            .marca-item { font-size: 0.9rem; }
-        }
-
-/* --- RECUADROS INDIVIDUALES CON CONTRASTE --- */
-        .grid-marcas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1.5rem;
-            justify-content: center;
-        }
-
-        .marca-box {
-            background-color: #f5f5f5; /* Gris muy claro (casi blanco) para que el negro resalte */
-            border: 1px solid #e0e0e0;
-            border-radius: 12px; /* Esquinas redondeadas elegantes */
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            transition: all 0.4s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave para darle profundidad */
-        }
-
-        .marca-box img {
-            max-width: 100%;
-            max-height: 55px;
-            width: auto;
-            /* Eliminamos el filtro de blanco para que se vean los colores reales */
-            filter: grayscale(0.2); 
-            opacity: 0.9;
-            transition: all 0.4s ease;
-        }
-
-        /* Efecto al pasar el mouse */
-        .marca-box:hover {
-            background-color: #ffffff; /* Blanco puro al resaltar */
-            border-color: var(--cian-matech);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 168, 193, 0.2); /* Brillo sutil del color de tu marca */
-        }
-
-        .marca-box:hover img {
-            filter: grayscale(0); /* Color 100% real al pasar el mouse */
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-/* --- ESTILOS DE FAQ (MODO ACORDEÓN) --- */
-        .faq-item {
-            background-color: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--blanco);
-            transition: background 0.3s;
-        }
-
-        .faq-question:hover {
-            background-color: #111;
-            color: var(--cian-matech);
-        }
-
-        .faq-answer {
-            padding: 0 1.5rem 1.5rem 1.5rem;
-            color: var(--gris-texto);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            display: none; /* ESTO OCULTA LA RESPUESTA AL INICIO */
-        }
-
-        .faq-question i {
-            font-size: 0.8rem;
-            color: var(--cian-matech);
-            transition: transform 0.3s;
-        }
-
-        /* Clase que usaremos con JavaScript para rotar la flecha */
-        .faq-item.active i {
-            transform: rotate(180deg);
-        }
-
-        /* Clase para mostrar la respuesta */
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-/* --- TÍTULOS DE SECCIÓN UNIFICADOS --- */
-        .section-title { 
-            text-align: center; 
-            font-size: 2.2rem; /* Tamaño simétrico */
-            margin-bottom: 3rem; 
-            text-transform: uppercase; 
-            color: var(--cian-matech); /* Color distintivo de MATECH */
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-
-        /* Ajuste para móviles (Simetría en pantallas pequeñas) */
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 2rem;
-            }
-        }
-
-/* --- ESTILOS DEL MENÚ DESPLEGABLE (DROPDOWN) --- */
-        .dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #0a0a0a;
-    min-width: 240px;
-    box-shadow: 0px 15px 30px rgba(0,0,0,0.8);
-    z-index: 9999; /* Asegura que esté por encima de todo */
-    border: 1px solid #222;
-    border-radius: 4px;
-    top: 100%; /* Se alinea justo debajo del texto */
-    left: 50%;
-    transform: translateX(-50%); /* Lo centra respecto al botón */
-}
-
-/* EL TRUCO: Un puente invisible para que el mouse no "caiga al vacío" */
-.dropdown-content::before {
-    content: "";
-    position: absolute;
-    top: -20px; /* Cubre el espacio de separación */
-    left: 0;
-    width: 100%;
-    height: 25px;
-    display: block;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown-content a {
-    color: var(--gris-texto);
-    padding: 14px 20px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.85rem;
-    border-bottom: 1px solid #111;
-    transition: all 0.3s;
-}
-
-.dropdown-content a:hover {
-    background-color: #111;
-    color: var(--cian-matech);
-    padding-left: 25px;
-}
-
-/* --- REFUERZO DE ADAPTABILIDAD TOTAL --- */
-html, body {
-    width: 100%;
-    overflow-x: hidden; /* Evita que la página se mueva hacia los lados en celulares */
-    -webkit-font-smoothing: antialiased; /* Mejora la lectura en iPhone/Mac */
-}
-
-img {
-    max-width: 100%; /* Las imágenes nunca se salen de su contenedor */
-    height: auto;
-}
-
-/* Ajuste de fuentes para pantallas muy pequeñas (iPhone SE, etc) */
-@media (max-width: 380px) {
-    .hero h1 { font-size: 1.5rem; }
-    .section-title { font-size: 1.6rem; }
-    nav ul { gap: 0.8rem; }
-    nav ul li a { font-size: 0.7rem; }
-}
-
-/* --- EFECTO PULSO WHATSAPP --- */
-        .btn-whatsapp {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--whatsapp-green);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            text-decoration: none;
-            z-index: 2000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            animation: pulse-whatsapp 2s infinite; /* Activamos la animación */
-        }
-
-        @keyframes pulse-whatsapp {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-    </style>
-</head>
-<body>
-
-   /* --- HEADER ADAPTABLE (MOBILE FRIENDLY) --- */
+        /* --- HEADER Y NAVEGACIÓN (STICKY) --- */
         header { 
             background-color: rgba(0, 0, 0, 0.95); 
             padding: 0.8rem 5%; 
@@ -413,49 +51,133 @@ img {
             width: 100%;
         }
 
-        nav {
-            width: 100%;
-            max-width: 1200px;
-        }
+        nav { width: 100%; max-width: 1200px; }
 
         nav ul { 
             display: flex; 
             list-style: none; 
-            gap: 1.5rem; 
+            gap: 2rem; 
             justify-content: center;
             align-items: center;
         }
 
-        /* --- TRUCO DE SCROLL HORIZONTAL PARA MÓVILES --- */
-        @media (max-width: 768px) {
-            nav ul {
-                justify-content: flex-start; /* Alinea al inicio para el scroll */
-                overflow-x: auto; /* Permite el deslizamiento lateral */
-                white-space: nowrap; /* Evita que los ítems salten de línea */
-                padding: 0.5rem 0;
-                gap: 1.2rem;
-                -webkit-overflow-scrolling: touch; /* Scroll suave en iPhone */
-            }
-            
-            /* Oculta la barra de scroll para que se vea más limpio */
-            nav ul::-webkit-scrollbar {
-                display: none;
-            }
-
-            nav ul li a {
-                font-size: 0.75rem; /* Letra un poco más pequeña en móvil */
-                letter-spacing: 1px;
-            }
+        nav ul li a { 
+            color: var(--blanco); 
+            text-decoration: none; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            transition: color 0.3s; 
         }
 
+        nav ul li a:hover { color: var(--cian-matech); }
+
+        /* --- SCROLL HORIZONTAL EN MÓVILES --- */
+        @media (max-width: 768px) {
+            nav ul {
+                justify-content: flex-start;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding: 0.5rem 0;
+                gap: 1.2rem;
+                -webkit-overflow-scrolling: touch;
+            }
+            nav ul::-webkit-scrollbar { display: none; }
+            nav ul li a { font-size: 0.75rem; }
+        }
+
+        /* --- HERO --- */
+        .hero { 
+            min-height: 75vh; 
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070') 
+                        no-repeat center center/cover; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding: 3rem 5%; 
+            gap: 2rem; 
+        }
+
+        .hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); text-transform: uppercase; line-height: 1.2; }
+        .hero p { font-size: clamp(0.9rem, 2vw, 1.2rem); max-width: 600px; color: var(--gris-texto); }
+
+        .btn-cta { background-color: var(--cian-matech); color: var(--negro-puro); padding: 1rem 2.5rem; text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s; display: inline-block; }
+        .btn-cta:hover { transform: scale(1.05); }
+
+        /* --- SECCIONES GENERALES --- */
+        section { padding: 5rem 10%; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 3rem; text-transform: uppercase; color: var(--cian-matech); font-weight: 700; letter-spacing: 2px; }
+
+        /* --- SOLUCIONES --- */
+        .grid-soluciones { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+        .card { background-color: var(--negro-suave); padding: 3rem; border-radius: 12px; text-align: center; border: 1px solid #222; transition: 0.3s; }
+        .card:hover { border-color: var(--cian-matech); transform: translateY(-5px); }
+        .card i { font-size: 3.5rem; color: var(--cian-matech); margin-bottom: 1.5rem; }
+
+        /* --- PROYECTOS --- */
+        .grid-proyectos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .proyecto-card { background-color: #0a0a0a; border-radius: 12px; overflow: hidden; border: 1px solid #1a1a1a; transition: 0.3s; }
+        .proyecto-card:hover { border-color: var(--cian-matech); transform: translateY(-8px); }
+        .proyecto-img { width: 100%; height: 220px; overflow: hidden; }
+        .proyecto-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .proyecto-card:hover .proyecto-img img { transform: scale(1.1); }
+        .proyecto-info { padding: 1.5rem; }
+        .proyecto-info span { color: var(--cian-matech); font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+
+        /* --- MARCAS --- */
+        .grid-marcas { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; justify-content: center; }
+        .marca-box { background-color: #f5f5f5; border-radius: 12px; height: 100px; display: flex; align-items: center; justify-content: center; padding: 20px; transition: 0.4s; }
+        .marca-box img { max-width: 100%; max-height: 55px; filter: grayscale(0.2); opacity: 0.9; }
+        .marca-box:hover { background-color: #fff; transform: translateY(-5px); border: 1px solid var(--cian-matech); }
+
+        /* --- FAQ ACORDEÓN --- */
+        .faq-item { background-color: #0a0a0a; border: 1px solid #1a1a1a; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; }
+        .faq-question { padding: 1.5rem; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; color: var(--blanco); }
+        .faq-answer { padding: 0 1.5rem 1.5rem; color: var(--gris-texto); display: none; }
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active .faq-question { color: var(--cian-matech); }
+
+        /* --- CONTACTO --- */
+        .contacto-container { max-width: 600px; margin: 0 auto; background: var(--negro-suave); padding: 3rem; border-radius: 15px; border: 1px solid #222; }
+        .form-input { width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; border-radius: 5px; margin-bottom: 1.5rem; outline: none; }
+
+        /* --- FOOTER --- */
+        footer { background-color: #050505; padding: 4rem 10% 2rem; text-align: center; border-top: 1px solid #1a1a1a; }
+        .footer-logo img { width: 220px; margin-bottom: 2rem; }
+        .social-icons a { color: var(--cian-matech); font-size: 1.8rem; margin: 0 10px; transition: 0.3s; }
+        .social-icons a:hover { color: var(--blanco); transform: scale(1.2); display: inline-block; }
+
+        /* --- WHATSAPP PULSE --- */
+        .btn-whatsapp { position: fixed; bottom: 30px; right: 30px; background-color: var(--whatsapp-green); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; z-index: 2000; animation: pulse-whatsapp 2s infinite; }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+
+        @media (max-width: 768px) { .section-title { font-size: 1.8rem; } section { padding: 3rem 5%; } }
+    </style>
+</head>
+<body>
+
     <div class="brand-banner">
-        <img src="logo-matech.jpeg" alt="MATECH SOLUTIONS Banner">
+        <img src="logo-matech.jpeg" alt="MATECH SOLUTIONS Logo">
     </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#soluciones">Soluciones</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#faq">Preguntas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <section class="hero">
         <h1>CONECTIVIDAD EMPRESARIAL</h1>
         <p>Expertos en Conectividad y Soporte en el Perú.</p>
-	<p> </p>
         <a href="#contacto" class="btn-cta">CONSULTAR AHORA</a>
     </section>
 
@@ -472,199 +194,110 @@ img {
                 <h3>Plataformas IoT</h3>
                 <p>Integración de tecnología inteligente para su negocio.</p>
             </div>
-
-	<div class="card">
-            <i class="fas fa-desktop"></i> <h3>Hardware y Software</h3>
-            <p>Mantenimiento preventivo de computadoras y soporte técnico especializado.</p>
-        </div>
-
+            <div class="card">
+                <i class="fas fa-desktop"></i>
+                <h3>Hardware y Software</h3>
+                <p>Mantenimiento preventivo y soporte técnico especializado.</p>
+            </div>
             <div class="card">
                 <i class="fas fa-shield-halved"></i>
-                <h3>Sistemas de Seguridad CCTV</h3>
-                <p>Venta e instalación de cámaras de seguridad (CCTV).</p>
+                <h3>Seguridad CCTV</h3>
+                <p>Venta e instalación de cámaras de seguridad de alta gama.</p>
             </div>
         </div>
     </section>
 
-	<section id="proyectos" style="background-color: #000; padding: 5rem 10%;">
-    <h2 class="section-title">Proyectos Ejecutados</h2>
-    <div class="grid-proyectos">
-        
-        <div class="proyecto-card">
-            <div class="proyecto-img">
-                <img src="https://images.unsplash.com/photo-1557597774-9d2739f85a94?auto=format&fit=crop&q=80&w=800" alt="Instalación CCTV">
+    <section id="proyectos" style="background-color: #000;">
+        <h2 class="section-title">Proyectos Ejecutados</h2>
+        <div class="grid-proyectos">
+            <div class="proyecto-card">
+                <div class="proyecto-img"><img src="https://images.unsplash.com/photo-1557597774-9d2739f85a94?auto=format&fit=crop&q=80&w=800" alt="CCTV"></div>
+                <div class="proyecto-info">
+                    <span>Seguridad Electrónica</span>
+                    <h3>Sistema CCTV IP - Hikvision</h3>
+                    <p>Instalación de 8 cámaras con monitoreo remoto para almacén logístico.</p>
+                </div>
             </div>
-            <div class="proyecto-info">
-                <span>Seguridad Electrónica</span>
-                <h3>Sistema CCTV IP - Hikvision</h3>
-                <p>Instalación de 8 cámaras con monitoreo remoto en tiempo real para almacén logístico.</p>
+            <div class="proyecto-card">
+                <div class="proyecto-img"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc48?auto=format&fit=crop&q=80&w=800" alt="WiFi"></div>
+                <div class="proyecto-info">
+                    <span>Conectividad</span>
+                    <h3>Optimización WiFi Corporativo</h3>
+                    <p>Access Points de alta densidad para oficinas administrativas.</p>
+                </div>
             </div>
-        </div>
-
-        <div class="proyecto-card">
-            <div class="proyecto-img">
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc48?auto=format&fit=crop&q=80&w=800" alt="Redes WiFi">
-            </div>
-            <div class="proyecto-info">
-                <span>Conectividad</span>
-                <h3>Optimización WiFi Corporativo</h3>
-                <p>Implementación de Access Points de alta densidad para oficinas administrativas.</p>
-            </div>
-        </div>
-
-        <div class="proyecto-card">
-            <div class="proyecto-img">
-                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" alt="Mantenimiento IT">
-            </div>
-            <div class="proyecto-info">
-                <span>Soporte Técnico</span>
-                <h3>Mantenimiento de Servidores</h3>
-                <p>Limpieza física, cambio de pasta térmica y optimización de software para centro de datos.</p>
+            <div class="proyecto-card">
+                <div class="proyecto-img"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" alt="IT"></div>
+                <div class="proyecto-info">
+                    <span>Soporte Técnico</span>
+                    <h3>Mantenimiento de Servidores</h3>
+                    <p>Optimización y limpieza técnica para centro de datos.</p>
+                </div>
             </div>
         </div>
+    </section>
 
-    </div>
-</section>
+    <section id="marcas" style="background-color: #050505;">
+        <h2 class="section-title">Partners Tecnológicos</h2>
+        <div class="grid-marcas">
+            <div class="marca-box"><img src="logo-hikvision.png" alt="Hikvision"></div>
+            <div class="marca-box"><img src="logo-dahua.png" alt="Dahua"></div>
+            <div class="marca-box"><img src="logo-intel.png" alt="Intel"></div>
+            <div class="marca-box"><img src="logo-cisco.png" alt="Cisco"></div>
+            <div class="marca-box"><img src="logo-tplink.png" alt="TP-Link"></div>
+            <div class="marca-box"><img src="logo-west.png" alt="Western Digital"></div>
+        </div>
+    </section>
 
-	<section id="marcas" style="background-color: #050505; padding: 5rem 10%;">
-    <h2 class="section-title">Partners Tecnológicos</h2>
-    <div class="grid-marcas">
-        
-        <div class="marca-box">
-            <img src="logo-hikvision.png" alt="Hikvision">
+    <section id="faq" style="background-color: #000;">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <div class="faq-question">¿Cada cuánto tiempo debo hacer mantenimiento? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Recomendamos mantenimiento preventivo cada 6 a 12 meses para asegurar la vida útil de sus equipos.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">¿Puedo ver mis cámaras desde el celular? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">¡Sí! Configuramos el acceso remoto para que vigile su negocio desde cualquier lugar del mundo.</div>
+            </div>
         </div>
-        
-        <div class="marca-box">
-            <img src="logo-dahua.png" alt="Dahua">
-        </div>
-        
-        <div class="marca-box">
-            <img src="logo-intel.png" alt="Intel">
-        </div>
-        
-        <div class="marca-box">
-            <img src="logo-cisco.png" alt="Cisco">
-        </div>
-        
-        <div class="marca-box">
-            <img src="logo-tplink.png" alt="TP-Link">
-        </div>
-        
-        <div class="marca-box">
-            <img src="logo-west.png" alt="Western Digital">
-        </div>
-
-    </div>
-</section>
-
-	<section id="faq" style="background-color: #000; padding: 5rem 10%;">
-    <h2 class="section-title">Preguntas Frecuentes</h2>
-    <div style="max-width: 800px; margin: 0 auto;">
-        
-        <div class="faq-item">
-            <div class="faq-question">¿Cada cuánto tiempo debo hacer mantenimiento a mi laptop? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">Recomendamos un mantenimiento preventivo cada 6 a 12 meses, dependiendo del uso. Esto incluye limpieza interna, cambio de pasta térmica y optimización de software para evitar sobrecalentamientos.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">¿Puedo ver mis cámaras de seguridad desde mi celular? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">¡Sí! Todas nuestras instalaciones de CCTV (Hikvision/Dahua) incluyen la configuración para que pueda monitorear su hogar o negocio en tiempo real desde cualquier lugar con internet.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">¿Mi internet está lento por el router o por mi proveedor? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">Realizamos auditorías de red para identificar si el problema es la cobertura WiFi, el cableado o el servicio contratado, ofreciendo soluciones para mejorar la velocidad en todos sus dispositivos.</div>
-        </div>
-
-    </div>
-</section>
+    </section>
 
     <section id="contacto">
         <h2 class="section-title">Contacto</h2>
         <div class="contacto-container">
-
             <form action="https://formspree.io/f/xaqpllld" method="POST">
-                
                 <input type="hidden" name="_next" value="https://RodrigoM27.github.io/matech-solutions/gracias.html">
-                
-                <div class="form-group">
-                    <input type="text" name="name" class="form-input" placeholder="Nombre completo" required>
-                </div>
-
-                <div class="form-group">
-                    <input type="email" name="email" class="form-input" placeholder="Correo electrónico" required>
-                </div>
-
-                <div class="form-group">
-                    <textarea name="message" class="form-input" rows="5" placeholder="Cuéntenos su requerimiento..." required></textarea>
-                </div>
-
+                <input type="text" name="name" class="form-input" placeholder="Nombre completo" required>
+                <input type="email" name="email" class="form-input" placeholder="Correo electrónico" required>
+                <textarea name="message" class="form-input" rows="5" placeholder="¿En qué podemos ayudarle?" required></textarea>
                 <button type="submit" class="btn-cta" style="width: 100%; border: none; cursor: pointer;">ENVIAR MENSAJE</button>
             </form>
-            
         </div>
     </section>
 
-    <a href="https://wa.me/51925517455?text=Hola%20MATECH%20SOLUTIONS,%20deseo%20solicitar%20una%20cotización%20sobre%20sus%20servicios." 
-   class="btn-whatsapp" 
-   target="_blank" 
-   title="Contáctanos por WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-</a>
+    <a href="https://wa.me/51925517455?text=Hola%20MATECH%20SOLUTIONS,%20deseo%20solicitar%20una%20cotización." class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <footer>
-        <div class="footer-logo">
-            <img src="logo-matech.jpeg" alt="MATECH Logo">
-        </div>
+        <div class="footer-logo"><img src="logo-matech.jpeg" alt="MATECH Logo"></div>
         <div class="social-icons">
-    <a href="TU_LINK_AQUI" target="_blank"><i class="fab fa-linkedin"></i></a>
-    
-    <a href="TU_LINK_AQUI" target="_blank"><i class="fab fa-facebook"></i></a>
-    
-    <a href="TU_LINK_AQUI" target="_blank"><i class="fab fa-tiktok"></i></a>
-    
-    <a href="TU_LINK_AQUI" target="_blank"><i class="fab fa-instagram"></i></a>
-    
-    <a href="TU_LINK_AQUI" target="_blank"><i class="fab fa-x-twitter"></i></a>
-</div>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
         <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #555;">&copy; 2026 MATECH SOLUTIONS. Lima, Perú.</p>
     </footer>
 
-	<script>
-    // 1. Abrir/Cerrar en móviles al tocar
-    document.querySelector('.dropbtn').addEventListener('click', function(e) {
-        if (window.innerWidth < 768) {
-            e.preventDefault();
-            let content = this.nextElementSibling;
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        }
-    });
-
-    // 2. Cerrar el menú al hacer clic en cualquier opción del desplegable
-    document.querySelectorAll('.dropdown-content a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.querySelector('.dropdown-content').style.display = 'none';
-        });
-    });
-
-	// --- LÓGICA PARA EL ACORDEÓN DE PREGUNTAS (FAQ) ---
-    document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', () => {
-            const item = question.parentElement;
-            
-            // Opcional: Cerrar otras preguntas abiertas al abrir una nueva
-            document.querySelectorAll('.faq-item').forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                }
+    <script>
+        // LÓGICA ACORDEÓN FAQ
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
             });
-
-            // Activar/Desactivar la pregunta seleccionada
-            item.classList.toggle('active');
         });
-    });
-
-</script>
-
+    </script>
 </body>
 </html>
