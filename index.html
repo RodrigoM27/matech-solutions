@@ -202,7 +202,7 @@
         @media (max-width: 768px) {
             nav ul {
                 justify-content: flex-start; /* Alinea al inicio para el scroll */
-                overflow-x: auto; /* Permite el deslizamiento lateral */
+                overflow-x: visible; /* Permite el deslizamiento lateral */
                 white-space: nowrap; /* Evita que los ítems salten de línea */
                 padding: 0.5rem 0;
                 gap: 1.2rem;
@@ -246,16 +246,16 @@
                 display: none !important;
         }
 
-@media (max-width: 768px) {
-    .dropdown-content {
-        position: fixed;
-        top: 65px; /* Ajustado para que no tape el logo del banner */
-        left: 5%;
-        right: 5%;
-        width: 90%;
-        z-index: 2000;
-    }
-}
+        @media (max-width: 768px) {
+            .dropdown-content {
+                position: fixed;
+                top: 65px; /* Ajustado para que no tape el logo del banner */
+                left: 5%;
+                right: 5%;
+                width: 90%;
+                z-index: 2000;
+            }
+        }
 
     </style>
 </head>
